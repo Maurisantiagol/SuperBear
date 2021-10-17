@@ -10,16 +10,72 @@ function validarNombreLista(Nombre) {
   var regex = /^[A-Z]{1,20}$/i;
   return regex.test(Nombre) ? true : false;
 }
+function NombreObjeto(Nombre) {
+  var regex = /^[A-Z0-9-]{1,45}$/i;
+  return regex.test(Nombre) ? true : false;
+}
+function MarcaObjeto(Nombre) {
+  var regex = /^[A-Z0-9-]{1,10}$/i;
+  return regex.test(Nombre) ? true : false;
+}
+function SuperObjeto(Nombre) {
+  var regex = /^[A-Z0-9-]{1,15}$/i;
+  return regex.test(Nombre) ? true : false;
+}
+function CantidadObjeto(Nombre) {
+  var regex = /^[0-9]{1,5}$/i;
+  return regex.test(Nombre) ? true : false;
+}
+function PrecioObjeto(Nombre) {
+  var regex = /^[0-9]{1,6}$/i;
+  return regex.test(Nombre) ? true : false;
+}
+function AnotacionesObjeto(Nombre) {
+  var regex = /^[A-Z0-9-]{1,32}$/i;
+  return regex.test(Nombre) ? true : false;
+}
 function validarContraseñas(Contraseña) {
   var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,64}$/;
   return regex.test(Contraseña) ? true : false;
 }
-function ValidarObjetoLista(){
-  
+function ValidarObjetoLista(event) {
+  var nombre = NombreObjeto(document.getElementById('inputnombre').value);
+  var marca = MarcaObjeto(document.getElementById('inputmarca').value);
+  var Super = SuperObjeto(document.getElementById('inputsuper').value);
+  var Cantidad = CantidadObjeto(document.getElementById('inputcantidad').value);
+  var Precio = PrecioObjeto(document.getElementById('inputprecio').value);
+  var Anotaciones = AnotacionesObjeto(document.getElementById('inputanotaciones').value);
+  if (nombre == true) {
+    alert('El nombre ' + document.getElementById('inputnombre').value + ' es correcto.');
+    if (marca == true) {
+      alert('La marca ' + document.getElementById('inputmarca').value + ' es correcta.');
+      if (Super == true) {
+        alert('El Supermercado ' + document.getElementById('inputsuper').value + ' es correcta.');
+        if (Cantidad == true) {
+          alert('La cantidad ' + document.getElementById('inputcantidad').value + ' es correcta.');
+          if (Precio == true) {
+            alert('El precio ' + document.getElementById('inputprecio').value + ' es correcta.');
+            if (Anotaciones == true) {
+              alert('Las anotaciones ' + document.getElementById('inputprecio').value + ' son correctas.');
 
-
-
-
+            } else {
+              alert('Las anotaciones ' + document.getElementById('inputprecio').value + ' son incorrectas.');
+            }
+          } else {
+            alert('El precio ' + document.getElementById('inputprecio').value + ' es incorrecta.');
+          }
+        } else {
+          alert('La cantidad ' + document.getElementById('inputcantidad').value + ' es incorrecta.');
+        }
+      } else {
+        alert('El Supermercado ' + document.getElementById('inputsuper').value + ' es incorrecta.');
+      }
+    } else {
+      alert('La marca ' + document.getElementById('inputmarca').value + ' es incorrecta.');
+    }
+  } else {
+    alert('El nombre ' + document.getElementById('inputnombre').value + ' es incorrecto.');
+  }
 
 }
 
@@ -43,6 +99,7 @@ function ValidarLogin(event) {
     alert('La dirección de email ' + document.getElementById('inputemail').value + ' es incorrecta.');
   }
 }
+
 function ValidarRegistro(event) {
 
   var email = validarEmail(document.getElementById('inputemail').value);
@@ -85,7 +142,7 @@ function ValidarRegistro(event) {
   }
 
 }
-function ValidarLista(event){
+function ValidarLista(event) {
   var nombreLista = validarNombreLista(document.getElementById('inputNombre').value);
   if (nombreLista == true) {
     alert('El nombre ' + document.getElementById('inputNombre').value + ' es correcto.');
